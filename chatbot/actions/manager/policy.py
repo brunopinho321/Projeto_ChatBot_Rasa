@@ -23,12 +23,16 @@ def policy(state_of_world):
         return 'show-info-mental-health'
     if (not('have-diagnostic-system' in state_of_world) and ('can-call-diagnostic-system' in state_of_world) and not('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
         return 'call-diagnostic-system'
+    if (not('have-patient-birthday' in state_of_world) and not('have-patient-name' in state_of_world) and not('have-patient-cpf' in state_of_world) and not('have-diagnostic-system' in state_of_world) and not('have-patient-comorbidities' in state_of_world) and not('have-patient-phone-number' in state_of_world) and not('have-patient-gender-f' in state_of_world) and not('have-patient-gender' in state_of_world) and ('can-call-diagnostic-system' in state_of_world) and not('have-patient-location' in state_of_world) and not('have-patient-postal-code' in state_of_world) and not('can-ask-postal-code' in state_of_world) and not('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
+        return 'call-diagnostic-system'
     if (('started' in state_of_world) and not('can-go-error-tratament' in state_of_world) and ('can-start-dialog' in state_of_world) and not('goal' in state_of_world)):
         return 'start-dialog'
     if (('can-show-info-mental-health' in state_of_world) and ('can-go-error-tratament' in state_of_world) and not('can-back-dialog' in state_of_world) and not('goal' in state_of_world)):
         return 'error-tratament'
     if (not('have-diagnostic-system' in state_of_world) and not('have-patient-days-symptoms' in state_of_world) and ('can-ask-patient-how-many-days-symptoms' in state_of_world) and not('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
         return 'ask-patient-how-many-days-symptoms'
+    if (not('have-diagnostic-system' in state_of_world) and not('have-patient-days-symptoms' in state_of_world) and not('have-patient-symptoms' in state_of_world) and ('started' in state_of_world) and not('can-go-error-tratament' in state_of_world) and ('can-start-dialog' in state_of_world) and not('goal' in state_of_world)):
+        return 'start-dialog'
     if (('user-initiative' in state_of_world) and not('started' in state_of_world) and not('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
         return 'show-welcome-message'
     if (('started' in state_of_world) and ('can-go-error-tratament' in state_of_world) and ('can-start-dialog' in state_of_world) and not('goal' in state_of_world)):
@@ -97,6 +101,8 @@ def policy(state_of_world):
         return 'ask-patient-symptoms'
     if (not('have-patient-phone-number' in state_of_world) and ('can-ask-patient-info-gender' in state_of_world) and not('have-patient-gender-f' in state_of_world) and not('have-patient-gender' in state_of_world) and not('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
         return 'ask-patient-info-gender'
+    if (not('have-patient-pregnant-info' in state_of_world) and not('have-patient-phone-number' in state_of_world) and ('can-ask-patient-info-gender' in state_of_world) and not('have-patient-gender-f' in state_of_world) and not('have-patient-gender' in state_of_world) and not('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
+        return 'ask-patient-info-gender'
     if (not('have-diagnostic-system' in state_of_world) and not('have-patient-days-symptoms' in state_of_world) and ('can-ask-patient-how-many-days-symptoms' in state_of_world) and ('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
         return 'error-tratament'
     if (('started' in state_of_world) and not('can-go-error-tratament' in state_of_world) and ('can-show-info-about-covid' in state_of_world) and not('goal' in state_of_world)):
@@ -128,4 +134,20 @@ def policy(state_of_world):
     if (not('have-patient-birthday' in state_of_world) and not('have-patient-comorbidities' in state_of_world) and not('have-patient-phone-number' in state_of_world) and ('can-ask-patient-info-birthday' in state_of_world) and not('have-patient-gender-f' in state_of_world) and not('have-patient-gender' in state_of_world) and not('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
         return 'ask-patient-info-birthday'
     if (not('have-patient-comorbidities' in state_of_world) and not('have-patient-phone-number' in state_of_world) and ('can-ask-patient-comorbidities' in state_of_world) and not('have-patient-gender-f' in state_of_world) and not('have-patient-gender' in state_of_world) and ('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
+        return 'error-tratament'
+    if (not('have-patient-birthday' in state_of_world) and not('have-patient-name' in state_of_world) and not('have-patient-comorbidities' in state_of_world) and not('have-patient-phone-number' in state_of_world) and ('can-ask-patient-info-name' in state_of_world) and not('have-patient-gender-f' in state_of_world) and not('have-patient-gender' in state_of_world) and not('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
+        return 'ask-patient-info-name'
+    if (not('have-patient-birthday' in state_of_world) and not('have-patient-comorbidities' in state_of_world) and not('have-patient-phone-number' in state_of_world) and ('can-ask-patient-info-birthday' in state_of_world) and not('have-patient-gender-f' in state_of_world) and not('have-patient-gender' in state_of_world) and ('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
+        return 'error-tratament'
+    if (not('have-patient-birthday' in state_of_world) and not('have-patient-name' in state_of_world) and not('have-patient-cpf' in state_of_world) and not('have-patient-comorbidities' in state_of_world) and not('have-patient-phone-number' in state_of_world) and not('have-patient-gender-f' in state_of_world) and not('have-patient-gender' in state_of_world) and ('can-ask-patient-info-cpf' in state_of_world) and not('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
+        return 'ask-patient-info-cpf'
+    if (not('have-patient-birthday' in state_of_world) and not('have-patient-name' in state_of_world) and not('have-patient-comorbidities' in state_of_world) and not('have-patient-phone-number' in state_of_world) and ('can-ask-patient-info-name' in state_of_world) and not('have-patient-gender-f' in state_of_world) and not('have-patient-gender' in state_of_world) and ('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
+        return 'error-tratament'
+    if (not('have-patient-birthday' in state_of_world) and not('have-patient-name' in state_of_world) and not('have-patient-cpf' in state_of_world) and not('have-patient-comorbidities' in state_of_world) and not('have-patient-phone-number' in state_of_world) and not('have-patient-gender-f' in state_of_world) and not('have-patient-gender' in state_of_world) and not('have-patient-location' in state_of_world) and not('have-patient-postal-code' in state_of_world) and not('can-ask-postal-code' in state_of_world) and ('can-ask-share-location' in state_of_world) and not('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
+        return 'ask-share-location'
+    if (not('have-patient-birthday' in state_of_world) and not('have-patient-name' in state_of_world) and not('have-patient-cpf' in state_of_world) and not('have-patient-comorbidities' in state_of_world) and not('have-patient-phone-number' in state_of_world) and not('have-patient-gender-f' in state_of_world) and not('have-patient-gender' in state_of_world) and ('can-ask-patient-info-cpf' in state_of_world) and ('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
+        return 'error-tratament'
+    if (not('have-patient-birthday' in state_of_world) and not('have-patient-name' in state_of_world) and not('have-patient-cpf' in state_of_world) and not('have-patient-comorbidities' in state_of_world) and not('have-patient-phone-number' in state_of_world) and not('have-patient-gender-f' in state_of_world) and not('have-patient-gender' in state_of_world) and not('have-patient-location' in state_of_world) and not('have-patient-postal-code' in state_of_world) and ('can-ask-postal-code' in state_of_world) and not('can-ask-share-location' in state_of_world) and not('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
+        return 'ask-postal-code'
+    if (not('have-patient-birthday' in state_of_world) and not('have-patient-name' in state_of_world) and not('have-patient-cpf' in state_of_world) and not('have-patient-comorbidities' in state_of_world) and not('have-patient-phone-number' in state_of_world) and not('have-patient-gender-f' in state_of_world) and not('have-patient-gender' in state_of_world) and not('have-patient-location' in state_of_world) and not('have-patient-postal-code' in state_of_world) and ('can-ask-postal-code' in state_of_world) and not('can-ask-share-location' in state_of_world) and ('can-go-error-tratament' in state_of_world) and not('goal' in state_of_world)):
         return 'error-tratament'

@@ -117,7 +117,7 @@ nlu:
     - [Antônio Edival de Sousa Rodrigues]{"entity": "have-patient-name"}
     - Meu nome é [Antonio Edival de Sousa Rodrigues]{"entity": "have-patient-name"}
     - [Ladyjane de Sousa Lima]{"entity": "have-patient-name"}
-    - [Edglair ALves de Vasconcelos]{"entity": "have-patient-name"}
+    - [Edglair Alves de Vasconcelos]{"entity": "have-patient-name"}
     - [Antônia Evandisa Bezerra]{"entity": "have-patient-name"}
     - [Christiane oliveira Collyer]{"entity": "have-patient-name"}
     - [Rebeca Farias Jodão]{"entity": "have-patient-name"}
@@ -203,10 +203,12 @@ nlu:
     - 10 dias
 - intent: send-info-location
   examples: |
-    - compartilhar [localização]{"entity" : "have-patient-location"}
+    - [compartilhar localização]{"entity" : "have-patient-location"}
+    - [compartilhar minha localização]{"entity" : "have-patient-location"}
     - [localização]{"entity" : "have-patient-location"} compartilhada 
     - [prefiro não declarar minha localização]{"entity":"not-have-patient-location"}
     - [não declarar]{"entity" : "not-have-patient-location"}
+    - [não  quero compartilhar] minha localização{"entity":"not-have-patient-location"}
 
 - intent: send-info-postal-code
   examples: |
@@ -488,7 +490,7 @@ nlu:
 
 - intent: can-show-info-about-covid-kill
   examples: |
-    - O novoiCoronavírus pode matar ?
+    - O novo Coronavírus pode matar ?
     - É possivel a covid matar?
 
 - intent: can-show-info-about-the-restrictions-to-buy

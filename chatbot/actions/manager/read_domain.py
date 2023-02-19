@@ -4,7 +4,7 @@ def imprimi(lines):
     for l in lines:
         print(l)
 
-def get_actions_domain(url = 'actions/manager/prp/src/Dom.pddl'):
+def get_actions_domain(url = 'actions/manager/planner-for-relevant-policies/src/Dom.pddl'):
     domain = open(url, 'r')
     lines = []
     domain_lines = []
@@ -74,29 +74,9 @@ def get_actions_domain(url = 'actions/manager/prp/src/Dom.pddl'):
                         #action.show_info()        
         #break
             actions.append(action)
+        domain.close()
     return actions           
         
         
 
-#def show_out(outcomes):
-#    for o in outcomes:
-#        print(o.get_name())
 
-# for a in actions:
-#     print('action: ', a.get_name())
-#     print('outcomes:')
-#     show_out(a.get_outcomes())
-#     print()
-
-
-#print(actions[1].get_outcomes()[0].get_predicates())
-#actions = get_actions_domain()
-
-# for a in actions:
-#     print('actions: ',a.get_name())
-#     for out in a.get_outcomes():
-#         print('outcome: ',out.get_name())
-#         for p in out.get_predicates():
-#             print('predicate:',p.get_name(),', values: ',p.get_value())
-#         print()
-#     print()

@@ -21,7 +21,7 @@ class Predicate(SuperClass):
         return self._value
 
     def show_info(self):
-        print("predicate: ",self._name, ", value: ", self._value)
+        print(("predicate: ",self._name, ", value: ", self._value))
 
 
 class Outcome(SuperClass):
@@ -40,7 +40,7 @@ class Outcome(SuperClass):
         self._predicates.append(predicate)
     
     def show_info(self):
-        print('outcome: ',self._name)
+        print(('outcome: ',self._name))
         for p in self._predicates:
             p.show_info()
 
@@ -64,7 +64,7 @@ class Action(SuperClass):
         self.outcomes = outcomes
    
     def show_info(self):
-        print("action: ", self._name)
+        print(("action: ", self._name))
         for out in self._outcomes:
             out.show_info()
             print()

@@ -7,13 +7,14 @@
 
 # This is a simple example for a custom action which utters "Hello World!"
 
-from typing import Any, Text, Dict, List
+import actions.manager.run_prp as run_prp
+run_prp.build_policy()
 
+from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-import sys
 import actions.manager.outcome_determination as od
-import actions.manager.reader as reader
+
 
 #
 # class ActionHelloWorld(Action):
@@ -36,7 +37,9 @@ class GlobalAction(Action):
         self.entities = []
         self.actions = []
         self.text = ""
-        reader
+            
+        
+        
     
     def name(self) -> Text:
         return 'global_action'
@@ -77,13 +80,15 @@ class GlobalAction(Action):
             return self.text 
         
         elif action == "call-diagnostic-system":
-            self.text = ""
+            self.text = '''Está ação simula uma chamada de sistema para diagnosticar o paciente.
+                        Digite 'diagnostico afirmativo' para posivel caso de covid, ou 'diagnostico negativo' coso contrario.
+                    '''
             return self.text
         
         elif action == "ask-share-location":
-            self.text = '''Vamos direcioná-lo(a) para nossa equipe de saúde. Clique no botão 'Compartilhar minha localização' para compartilhar onde você está. 
+            self.text = '''Vamos direcioná-lo(a) para nossa equipe de saúde. Digite'Compartilhar minha localização' para compartilhar onde você está. 
                     Ao compartilhar sua localização, você ajuda o Governo a te proteger e proter os outros.
-                    Caso não deseja compartilhar, clique no botão 'Não quero compartilhar minha localização'. '''
+                    Caso não deseja compartilhar, Digite 'Não quero compartilhar minha localização'. '''
             return self.text
         
         elif action == "ask-postal-code":
@@ -146,7 +151,8 @@ class GlobalAction(Action):
             return self.text
         
         elif action == "show-info-about-new-corona-virus":
-            self.text = '''Coronavírus é uma família de vírus que causam infecções respiratórias. Um novo Coronavírus foi descoberto em dezembro de 2019, na China. Ele causa a doença chamada de COVID-19.'''
+            self.text = '''Coronavírus é uma família de vírus que causam infecções respiratórias. Um novo Coronavírus foi descoberto em dezembro de 2019, na China. Ele causa a doença chamada de COVID-19.
+                    '''
             return self.text
         
         elif action == "show-info-about-main-symptoms":
@@ -287,11 +293,15 @@ class GlobalAction(Action):
             return action
         
         elif action == "show-info-antibiotics-effects":
-            self.text = '''Antibióticos *não* são eficazes para prevenir e tratar o novo Coronavírus. Antibióticos só funcionam contra bactérias. O novo Coronavírus (COVID-19) é um vírus.'''
+            self.text = '''Antibióticos *não* são eficazes para prevenir e tratar o novo Coronavírus. Antibióticos só funcionam contra bactérias. O novo Coronavírus (COVID-19) é um vírus.
+                             Digite voltar para retornar ao menu principal ou finalizar para terminar o diálogo.
+                        '''
             return self.text
         
         elif action == "show-info-about-medicine-for-covid":
-            self.text = '''Ainda não existem remédios específicos recomendados para prevenir ou tratar o novo Coronavírus (COVID-19).'''
+            self.text = '''Ainda não existem remédios específicos recomendados para prevenir ou tratar o novo Coronavírus (COVID-19).
+                            Digite voltar para retornar ao menu principal ou finalizar para terminar o diálogo.
+                        '''
             return self.text
         
         elif action == "show-info-about-covid-survive-in-surface":
@@ -304,7 +314,9 @@ class GlobalAction(Action):
             return action
         
         elif action == "show-info-others":
-            self.text = '''Este é um canal para te orientar sobre o novo Coronavírus (COVID-19).\n \n[ 📞 Para denunciar descumprimento a determinações do Governo no enfrentamento ao novo Coronavírus, ligue 190.  📞 Para outras informações, fale com a Central de Atendimento da Ouvidoria pelo 155.'''
+            self.text = '''Este é um canal para te orientar sobre o novo Coronavírus (COVID-19).\n \n[ 📞 Para denunciar descumprimento a determinações do Governo no enfrentamento ao novo Coronavírus, ligue 190.  📞 Para outras informações, fale com a Central de Atendimento da Ouvidoria pelo 155.
+                            Digite voltar para retornar ao menu principal ou finalizar para terminar o diálogo.
+                        '''
             return self.text
         
         elif action == "end-conversation":
@@ -318,7 +330,9 @@ class GlobalAction(Action):
             return self.text
 
         elif action == "health-agent-takes-control":
-            self.text = '''Agente de saúde está conversando contigo.'''
+            self.text = '''Essa ação representa que um agente da sáude está conversando com o paciente.
+                Digite controlando o diálogo para continuar com essa ação, ou digite finalizar para encerrar o atendimento.
+            '''
             return self.text
         else:
             return self.text
@@ -353,7 +367,7 @@ class GlobalAction(Action):
         # for entity in entities:
         #     self.entities.append(entity)
         
-        print('estado: ',od.state)
+        print('estado: ',self.od.state)
        
         
         if od.state == []:
